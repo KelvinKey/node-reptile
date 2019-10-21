@@ -1,18 +1,18 @@
-//引入依赖
-//
+'use strict'
+
+const fs = require('fs');
+const path = require('path');
 const https = require('https');
 const cheerio = require('cheerio');
 const iconv = require('iconv-lite')
 const request = require("request");
-const fs = require('fs');
-const path = require('path');
 
 const url = 'https://unsplash.com/';
 
 //方法对象
 const util = {
 
-  getsrc: function (url) {
+  getsrc: url => {
     https.get(url, res => {
       const chunks = [];
       res.on('data', chunk => {
@@ -50,7 +50,7 @@ const util = {
   },
 
   //运行主函数
-  main: function () {
+  main: () => {
     console.log("------start--------");
     util.getsrc(url);
   },
